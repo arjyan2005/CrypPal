@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+body {
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f9fc;
+  color: #333;
+  transition: background 0.3s, color 0.3s;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+#login-page, #dashboard {
+  display: none;
+  padding: 2rem;
+}
+
+#login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+form input, form select, form button {
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  background-color: #0084ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #005bb5;
+}
+
+.dashboard-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tile-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tile {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  flex: 1;
+  min-width: 250px;
+}
+
+.tile:hover {
+  transform: scale(1.01);
+}
+
+.tile-content {
+  display: none;
+  margin-top: 1rem;
+}
+
+.tile-content.show {
+  display: block;
+}
+
+#theme-toggle {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background: #e0e0e0;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+}
+
+.dark-mode .tile {
+  background: #1f1f1f;
+  color: white;
+}
+
+.dark-mode input, .dark-mode select {
+  background: #2a2a2a;
+  color: white;
+  border: 1px solid #555;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .tile {
+    flex: 1 1 100%;
+  }
+}
