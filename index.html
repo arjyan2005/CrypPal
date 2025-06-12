@@ -8,16 +8,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Login Page -->
   <div id="login-page">
     <h1>Welcome to CrypPal</h1>
     <form id="login-form">
-      <input type="text" id="username" placeholder="Enter your username" required />
+      <input type="text" id="username" placeholder="Enter your name" required />
       <button type="submit">Login</button>
     </form>
   </div>
 
-  <!-- Dashboard -->
   <div id="dashboard">
     <div class="dashboard-title">
       <h2>Hello, <span id="username-display"></span></h2>
@@ -31,24 +29,24 @@
         <div class="tile-content">
           <form id="send-form">
             <select id="coin">
-              <option value="BTC">BTC</option>
-              <option value="ETH">ETH</option>
-              <option value="USDT">USDT</option>
+              <option value="BTC">Bitcoin (BTC)</option>
+              <option value="ETH">Ethereum (ETH)</option>
+              <option value="USDT">Tether (USDT)</option>
             </select>
             <input type="text" id="recipient-id" placeholder="Recipient ID" required />
-            <input type="number" step="any" id="amount" placeholder="Amount" required />
+            <input type="number" id="amount" placeholder="Amount" required step="any" />
             <button type="submit">Send</button>
           </form>
         </div>
       </div>
 
-      <!-- Balance -->
+      <!-- Check Balance -->
       <div class="tile">
         <h3>Check Balance</h3>
         <div class="tile-content">
-          <p><strong>BTC:</strong> <span id="btc-balance"></span></p>
-          <p><strong>ETH:</strong> <span id="eth-balance"></span></p>
-          <p><strong>USDT:</strong> <span id="usdt-balance"></span></p>
+          <p><strong>BTC:</strong> <span id="btc-balance">-</span></p>
+          <p><strong>ETH:</strong> <span id="eth-balance">-</span></p>
+          <p><strong>USDT:</strong> <span id="usdt-balance">-</span></p>
         </div>
       </div>
 
@@ -60,21 +58,13 @@
         </div>
       </div>
 
-      <!-- Live Price Chart -->
+      <!-- Live Price -->
       <div class="tile">
-        <h3>Live Price Chart</h3>
+        <h3>Live Price (INR)</h3>
         <div class="tile-content">
-          <p><strong>BTC:</strong> <span id="btc-price">Loading...</span></p>
-          <p><strong>ETH:</strong> <span id="eth-price">Loading...</span></p>
-          <p><strong>USDT:</strong> <span id="usdt-price">Loading...</span></p>
-        </div>
-      </div>
-
-      <!-- Scan QR (UI Only) -->
-      <div class="tile">
-        <h3>Scan QR (Coming Soon)</h3>
-        <div class="tile-content">
-          <p>Feature coming soon. Stay tuned!</p>
+          <p>BTC: <span id="btc-price">Loading...</span></p>
+          <p>ETH: <span id="eth-price">Loading...</span></p>
+          <p>USDT: <span id="usdt-price">Loading...</span></p>
         </div>
       </div>
 
@@ -82,15 +72,21 @@
       <div class="tile">
         <h3>Crypto Wallet</h3>
         <div class="tile-content">
-          <label for="wallet-coin">Add Fund - Select Coin:</label>
           <select id="wallet-coin">
-            <option value="" disabled selected>Select Coin</option>
-            <option value="BTC">BTC</option>
-            <option value="ETH">ETH</option>
-            <option value="USDT">USDT</option>
+            <option value="">Select Coin</option>
+            <option value="BTC">Bitcoin (BTC)</option>
+            <option value="ETH">Ethereum (ETH)</option>
+            <option value="USDT">Tether (USDT)</option>
           </select>
-          <p><strong>Wallet Address:</strong> <span id="wallet-address">Select a coin above</span></p>
-          <p><small>Network: BNB Smart Chain (BEP20)</small></p>
+          <p id="wallet-address">Select a coin above</p>
+        </div>
+      </div>
+
+      <!-- Scan QR (UI only) -->
+      <div class="tile">
+        <h3>Scan QR (Coming Soon)</h3>
+        <div class="tile-content">
+          <p>This feature is under development.</p>
         </div>
       </div>
     </div>

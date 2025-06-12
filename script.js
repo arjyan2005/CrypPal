@@ -8,11 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const inrValueDisplay = document.createElement("p");
   document.getElementById("send-form").appendChild(inrValueDisplay);
 
-  let balances = {
-    BTC: 4.0,
-    ETH: 8.0,
-    USDT: 100000
-  };
+  let balances = { BTC: 4.0, ETH: 8.0, USDT: 100000 };
   let transactions = [];
   let currentRates = {};
 
@@ -41,9 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const fetchPrices = async () => {
     try {
-      const res = await fetch(
-        "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether&vs_currencies=inr"
-      );
+      const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether&vs_currencies=inr");
       const data = await res.json();
       document.getElementById("btc-price").textContent = `₹${data.bitcoin.inr}`;
       document.getElementById("eth-price").textContent = `₹${data.ethereum.inr}`;
@@ -51,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
       currentRates = {
         BTC: data.bitcoin.inr,
         ETH: data.ethereum.inr,
-        USDT: data.tether.inr
+        USDT: data.tether.inr,
       };
     } catch (error) {
       console.error("Price fetch failed", error);
@@ -78,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const coin = document.getElementById("coin").value;
     const recipient = document.getElementById("recipient-id").value;
     const amount = parseFloat(document.getElementById("amount").value);
-    if (amount < 0.00000000000025) {
+    if (amount < 0.0001) {
       alert("Amount too small!");
       return;
     }
@@ -93,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
         amount,
         recipient,
         date: new Date().toLocaleString(),
-        status
+        status,
       });
       updateHistory();
       updateBalances();
@@ -118,10 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let color = "orange";
       if (tx.status === "Paid") color = "purple";
       else if (tx.status === "Failed") color = "red";
-      li.innerHTML = `
-        <strong style="color:${color}">${tx.status}</strong> - ${tx.coin} ${tx.amount} to <em>${tx.recipient}</em><br>
-        <small>${tx.date}</small>
-      `;
+      li.innerHTML = `<strong style="color:${color}">${tx.status}</strong> - ${tx.coin} ${tx.amount} to <em>${tx.recipient}</em><br><small>${tx.date}</small>`;
       list.appendChild(li);
     });
   };
