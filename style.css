@@ -1,17 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
+:root {
+  --primary-bg: #0f172a;
+  --secondary-bg: #1e293b;
+  --text-color: #f1f5f9;
+  --tile-bg: #1e293b;
+  --tile-hover: #334155;
+  --accent: #3b82f6;
+  --button-hover: #2563eb;
+  --input-bg: #1e293b;
+  --input-border: #475569;
+}
+
 body {
   font-family: 'Rubik', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f7f9fc;
-  color: #333;
+  background-color: var(--primary-bg);
+  color: var(--text-color);
   transition: background 0.3s, color 0.3s;
 }
 
 .dark-mode {
-  background-color: #121212;
-  color: #f1f1f1;
+  background-color: var(--primary-bg);
+  color: var(--text-color);
 }
 
 #login-page, #dashboard {
@@ -32,29 +44,36 @@ h1 {
   margin-bottom: 1rem;
 }
 
-form input, form select, form button {
-  padding: 0.5rem;
+form input,
+form select,
+form button {
+  padding: 0.75rem;
   margin: 0.5rem 0;
   font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  border-radius: 10px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-color);
 }
 
 form button {
-  background-color: #0084ff;
+  background-color: var(--accent);
   color: white;
   border: none;
   cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
 }
 
 form button:hover {
-  background-color: #005bb5;
+  background-color: var(--button-hover);
 }
 
 .dashboard-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .tile-container {
@@ -64,10 +83,10 @@ form button:hover {
 }
 
 .tile {
-  background: #fff;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background: var(--tile-bg);
+  padding: 1.25rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
   flex: 1;
@@ -75,8 +94,9 @@ form button:hover {
 }
 
 .tile:hover {
-  transform: scale(1.01);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  background: var(--tile-hover);
 }
 
 .tile-content {
@@ -92,22 +112,11 @@ form button:hover {
 #theme-toggle {
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  background: #e0e0e0;
-  cursor: pointer;
+  background: var(--tile-hover);
+  color: white;
   border: none;
   font-weight: bold;
-}
-
-.dark-mode .tile {
-  background: #1f1f1f;
-  color: white;
-}
-
-.dark-mode input,
-.dark-mode select {
-  background: #2a2a2a;
-  color: white;
-  border: 1px solid #555;
+  cursor: pointer;
 }
 
 ul {
@@ -122,6 +131,35 @@ ul {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Light mode (if toggled) */
+body:not(.dark-mode) {
+  background-color: #f7f9fc;
+  color: #333;
+}
+
+body:not(.dark-mode) .tile {
+  background: #fff;
+  color: #333;
+}
+
+body:not(.dark-mode) form input,
+body:not(.dark-mode) form select {
+  background: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+body:not(.dark-mode) #theme-toggle {
+  background: #e0e0e0;
+  color: #000;
 }

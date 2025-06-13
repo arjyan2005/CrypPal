@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const coin = document.getElementById("coin").value;
     const recipient = document.getElementById("recipient-id").value;
     const amount = parseFloat(document.getElementById("amount").value);
-    if (amount < 0.0001) {
+    if (amount < 0.00000000000025) {
       alert("Amount too small!");
       return;
     }
